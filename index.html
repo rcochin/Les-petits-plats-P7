@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les petits plats</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://kit.fontawesome.com/cb09e93f31.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="./assets/js/json/recipes.js"></script>
+</head>
+<body>
+    <header>
+        <img src="./images/logo.PNG" alt="Logo Les petits plats" class="logo">
+    </header>
+    <main>
+        <section id="search-container">
+            <div id="searchbar-container">
+                <input type="text" name="searchbar" id="searchbar" placeholder="Rechercher une recette">
+                <i class="fas fa-search"></i>
+            </div>
+            <div id="filter-container">
+                <div id="tag-container"></div>
+                <div class="filter-ingredient filter">
+                    <input type="text" class="elem-searchbar" name="ingredient-searchbar" id="ingrediant-searchbar" placeholder="Ingrédients">
+                    <i class="fas fa-angle-down"></i>
+                    <i class="fas fa-angle-up"></i>
+                    <div id="liste-ingredients" class="liste-element"></div>
+                </div>
+                <div class="filter-appareil filter">
+                    <input type="text" class="elem-searchbar" name="appareil-searchbar" id="appareil-searchbar" placeholder="Appareils">
+                    <i class="fas fa-angle-down"></i>
+                    <i class="fas fa-angle-up"></i>
+                    <div id="liste-appareils" class="liste-element"></div>
+                </div>
+                <div class="filter-ustensiles filter">
+                    <input type="text" class="elem-searchbar" name="ustensile-searchbar" id="ustensile-searchbar" placeholder="Ustensiles">
+                    <i class="fas fa-angle-down"></i>
+                    <i class="fas fa-angle-up"></i>
+                    <div id="liste-ustensiles" class="liste-element"></div>
+                </div>
+            </div>
+        </section>
+        <section id="recette-container">
+        </section>
+    </main>
+</body>
+<script src="./assets/js/index.js"></script>
+</html>
