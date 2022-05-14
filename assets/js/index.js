@@ -283,6 +283,7 @@ function createRecipeTable(value){
             return recipe;
         }
     })
+    console.log(filteredRecipes);
     renderRecipe(filteredRecipes);
 }
 
