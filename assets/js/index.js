@@ -278,13 +278,11 @@ searchbar.addEventListener('keyup', function(){
 
 //création d'un nouveau tableau de recette en fonction de ce que tape l'utilisateur dans la barre de recherche
 function createRecipeTable(value){
-    var filteredRecipes = []; 
-    recipes.forEach((recipe)=>{
+    var filteredRecipes = recipes.map((recipe)=>{
         if(recipe.name.toLowerCase().includes(value.toLowerCase()) || recipe.description.toLowerCase().includes(value.toLowerCase())){
-            filteredRecipes.push(recipe);
+            return filteredRecipes.push(recipe);
         }
-        
-    });
+    })
     renderRecipe(filteredRecipes);
 }
 
