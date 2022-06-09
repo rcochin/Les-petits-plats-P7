@@ -51,7 +51,7 @@ header .logo{
 }
 
 .filter input{
-    height: 70px;
+    height: 40px;
     border: none;
     border-radius: 5px;
     padding: 15px;
@@ -89,6 +89,7 @@ header .logo{
     display: flex;
     flex-wrap: wrap;
     margin-top: 40px;
+    margin-bottom: 100px;
 }
 
 #recette-container article{
@@ -96,6 +97,8 @@ header .logo{
     flex-direction: column;
     width: 450px;
     margin-right: 53px;
+    margin-top: 20px;
+    transform: translateY(20px);
 }
 
 .img-recette{
@@ -137,6 +140,7 @@ header .logo{
 .infos-container .recette ul{
     list-style: none;
     padding: 0px;
+    width: 65%;
 }
 
 .infos-container .recette ul li{
@@ -145,28 +149,38 @@ header .logo{
 }
 .infos-container .recette ul li p{margin: 0;}
 
-.infos-container .recette .preparation{width: 190px;}
+.infos-container .recette .preparation{width: 190px; overflow:auto; height: 200px;}
 
 /*---- listes ----*/
 #liste-ingredients, #liste-appareils, #liste-ustensiles{
     position: absolute;
     display: none;
-    top: 90px;
+    top: 65px;
     width: 1083px;
     justify-content: space-between;
     flex-wrap: wrap;
     z-index: 1;
     padding: 10px;
     color: white;
-    border-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
-#liste-ingredients{background-color: #3282F7;}
+#liste-ingredients{
+    background-color: #3282F7;
+    overflow: auto;
+    max-height: 400px;
+}
 #liste-appareils{background-color: #68D9A4;}
-#liste-ustensiles{background-color: #ED6454;}
+#liste-ustensiles{
+    background-color: #ED6454;
+    overflow: auto;
+    width: 940px;
+}
 
 #liste-ingredients p, #liste-appareils p, #liste-ustensiles p{
-    margin: 5px 50px;
+    margin: 5px 20px;
     text-align: left;
     min-width: 261px;
 }
@@ -176,6 +190,14 @@ header .logo{
 .single-ingredient, .single-appliance, .single-ustensile{
     cursor: pointer;
     display: block;
+}
+
+#liste-ingredients::-webkit-scrollbar{width: 7px;}
+
+#liste-ingredients::-webkit-scrollbar-track{background-color: #3282F7; border-radius: 100%;}
+#liste-ingredients::-webkit-scrollbar-thumb{
+    border-radius: 100vw;
+    background-color: #2165ca;
 }
 
 /*---- liste appareils ----*/
@@ -190,6 +212,7 @@ header .logo{
 
 .single-tag{
     color: white;
+    height: 40px;
     border-radius: 5px;
     padding: 0px 15px;
     display: flex;

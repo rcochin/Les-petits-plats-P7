@@ -5,6 +5,7 @@ var ingredientTable = [];
 var applianceTable = [];
 var ustensileTable = [];
 var filteredRecipes = recipes;
+defaultDisplay();
 
 filteredRecipes.forEach((recipe)=>{
     for(let i =0; i<recipe.ingredients.length; i++){
@@ -183,8 +184,8 @@ function displayElementList(dropdownBtn, dropupBtn, input, filteredElement){
 }
 
 /*------------------------------------ Tags ------------------------------------*/
-var allLists = document.querySelectorAll('.liste-element');
 const tagContainer = document.getElementById('tag-container');
+var allLists = document.querySelectorAll('.liste-element');
 
 allLists.forEach((list)=>{
     var listNodes = list.childNodes;
@@ -194,6 +195,19 @@ allLists.forEach((list)=>{
         })
     })
 })
+
+function tagsClickEvent(){
+    allLists = document.querySelectorAll('.liste-element');
+
+    allLists.forEach((list)=>{
+        var listNodes = list.childNodes;
+        listNodes.forEach((node)=>{
+            node.addEventListener('click', function(){
+                createTag(node);
+            })
+        })
+    })
+}
 
 //création des tags
 function createTag(element){
@@ -288,7 +302,6 @@ function filteredRecipesWithTags(tags){
         var allUstensilesAreIn = true;
         tags[2].forEach((ustensileTag)=>{
             allUstensilesAreIn = false;
-            console.log(recipe);
             if(recipe.ustensils.includes(ustensileTag)){
                 allUstensilesAreIn = true;
             }
@@ -298,6 +311,7 @@ function filteredRecipesWithTags(tags){
             recipesTags.push(recipe);
         }
     })
+    filterList(recipesTags);
     renderRecipes(recipesTags);
 }
 
@@ -314,7 +328,6 @@ searchbar.addEventListener('keyup', function(){
 
 //création d'un nouveau tableau de recette en fonction de ce que tape l'utilisateur dans la barre de recherche
 function createRecipeTable(value){
-    console.log(value.length);
     if(value.length > 2){
         filteredRecipes = recipes.map((recipe)=>{
             if(recipe.name.toLowerCase().includes(value.toLowerCase()) || recipe.description.toLowerCase().includes(value.toLowerCase())){
@@ -370,9 +383,61 @@ function filterList(value){
     }
     
     createElementHTML(ingredientTable);
+    tagsClickEvent();
 }
 
 //création des recettes HTML
+//création des recettes HTML
+function defaultDisplay(){
+    var recetteContainer = document.getElementById('recette-container');
+    recipes.forEach((recipe)=>{
+        const article = document.createElement('article');
+        const img = document.createElement('div');
+        const infoContainer = document.createElement('div');
+        const primaryInfos = document.createElement('div');
+        const h3 = document.createElement('h3');
+        const primaryDIV = document.createElement('div');
+        const icon = document.createElement('i');
+        const timeP = document.createElement('p');
+        const recette = document.createElement('div');
+        const listeIngredients = document.createElement('ul');
+        for(let i =0; i<recipe.ingredients.length; i++){
+            var li = document.createElement('li');
+            var dosage = document.createElement('p');
+            var ingredient = document.createElement('strong');
+            if(recipe.ingredients[i].unit == undefined || recipe.ingredients[i].quantity == undefined){
+                var unite = "";
+            }else{
+                var unite = recipe.ingredients[i].unit
+            }
+            dosage.textContent = recipe.ingredients[i].quantity + ' ' + unite;
+            ingredient.textContent = recipe.ingredients[i].ingredient + ' :';
+            li.append(ingredient, dosage);
+            listeIngredients.append(li);
+        }
+        const preparation = document.createElement('p');
+        //création des attributs
+        img.setAttribute('class', 'img-recette');
+        infoContainer.setAttribute('class', 'infos-container');
+        primaryInfos.setAttribute('class','primary-infos');
+        icon.setAttribute('class', 'far fa-clock');
+        timeP.setAttribute('class', 'time');
+        recette.setAttribute('class','recette');
+        listeIngredients.setAttribute('class','ingrediants');
+        preparation.setAttribute('class','preparation');
+        //insertion des éléments html
+        h3.textContent = recipe.name;
+        timeP.textContent = recipe.time + ' min';
+        primaryDIV.append(icon,timeP);
+        primaryInfos.append(h3, primaryDIV);
+        preparation.textContent = recipe.description;
+        recette.append(listeIngredients, preparation);
+        infoContainer.append(primaryInfos, recette);
+        article.append(img,infoContainer);
+         recetteContainer.append(article);     
+    })
+}
+
 function renderRecipes(searchValue){
     var recetteContainer = document.getElementById('recette-container');
     recetteContainer.innerHTML = "";
