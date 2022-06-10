@@ -282,13 +282,13 @@ function createTagsTable(){
             counterUstensiles++;
         }
     })
+    console.log(tagsTable);
     filteredRecipesWithTags(tagsTable);
 }
 
 
 function filteredRecipesWithTags(tags){
     var recipesTags = [];
-    var counter = 0;
     filteredRecipes.forEach((recipe)=>{
         var allIngredientsAreIn = true;
         tags[0].forEach((ingredientTag)=>{
@@ -401,11 +401,10 @@ function filterList(value){
         })
     }
     
-    createElementHTML(ingredientTable);
+    createElementHTML();
     tagsClickEvent();
 }
 
-//création des recettes HTML
 //création des recettes HTML
 function defaultDisplay(){
     var recetteContainer = document.getElementById('recette-container');
