@@ -111,14 +111,32 @@ function displayElementList(dropdownBtn, dropupBtn, input, filteredElement){
     if(dropdownBtn != null){
         if(dropdownBtn.parentElement.className == "filter-ingredient filter"){
             listeIngredientsDIV.style.display = "flex";
+            listeAppliancesDIV.style.display = "none";
+            listeUstensilesDIV.style.display = "none";
+            document.querySelector('.filter-appareil.filter .fas.fa-angle-up').style.display = "none";
+            document.querySelector('.filter-appareil.filter .fas.fa-angle-down').style.display = "flex";
+            document.querySelector('.filter-ustensiles.filter .fas.fa-angle-up').style.display = "none";
+            document.querySelector('.filter-ustensiles.filter .fas.fa-angle-down').style.display = "flex";
             dropdownBtn.style.display = "none";
             dropdownBtn.nextElementSibling.style.display = "flex";
         }else if(dropdownBtn.parentElement.className == "filter-appareil filter"){
             listeAppliancesDIV.style.display = "flex";
+            listeIngredientsDIV.style.display = "none";
+            listeUstensilesDIV.style.display = "none";
+            document.querySelector('.filter-ingredient.filter .fas.fa-angle-up').style.display = "none";
+            document.querySelector('.filter-ingredient.filter .fas.fa-angle-down').style.display = "flex";
+            document.querySelector('.filter-ustensiles.filter .fas.fa-angle-up').style.display = "none";
+            document.querySelector('.filter-ustensiles.filter .fas.fa-angle-down').style.display = "flex";
             dropdownBtn.style.display = "none";
             dropdownBtn.nextElementSibling.style.display = "flex";
         }else if(dropdownBtn.parentElement.className == "filter-ustensiles filter"){
             listeUstensilesDIV.style.display = "flex";
+            listeIngredientsDIV.style.display = "none";
+            listeAppliancesDIV.style.display = "none";
+            document.querySelector('.filter-ingredient.filter .fas.fa-angle-up').style.display = "none";
+            document.querySelector('.filter-ingredient.filter .fas.fa-angle-down').style.display = "flex";
+            document.querySelector('.filter-appareil.filter .fas.fa-angle-up').style.display = "none";
+            document.querySelector('.filter-appareil.filter .fas.fa-angle-down').style.display = "flex";
             dropdownBtn.style.display = "none";
             dropdownBtn.nextElementSibling.style.display = "flex";
         }
@@ -335,7 +353,8 @@ function createRecipeTable(value){
             }
         }).filter(notUndefined=>notUndefined!=undefined);
     }else{
-        filteredRecipes = [];
+        defaultDisplay();
+        filteredRecipes = recipes;
     }
     filterList(filteredRecipes);
     renderRecipes(filteredRecipes);
