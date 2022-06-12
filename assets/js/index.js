@@ -111,6 +111,10 @@ function displayElementList(dropdownBtn, dropupBtn, input, filteredElement){
     if(dropdownBtn != null){
         if(dropdownBtn.parentElement.className == "filter-ingredient filter"){
             listeIngredientsDIV.style.display = "flex";
+            document.querySelector('.filter-ingredient input').style.width = "1072px";
+            document.querySelector('.filter-appareil input').style.width = "100%";
+            document.querySelector('.filter-ustensiles input').style.width = "100%";
+            document.querySelector('.filter').style.marginRight = "20px";
             listeAppliancesDIV.style.display = "none";
             listeUstensilesDIV.style.display = "none";
             document.querySelector('.filter-appareil.filter .fas.fa-angle-up').style.display = "none";
@@ -123,6 +127,10 @@ function displayElementList(dropdownBtn, dropupBtn, input, filteredElement){
             listeAppliancesDIV.style.display = "flex";
             listeIngredientsDIV.style.display = "none";
             listeUstensilesDIV.style.display = "none";
+            document.querySelector('.filter-appareil input').style.width = "1072px";
+            document.querySelector('.filter-ingredient input').style.width = "100%";
+            document.querySelector('.filter-ustensiles input').style.width = "100%";
+            document.querySelector('.filter').style.marginRight = "20px";
             document.querySelector('.filter-ingredient.filter .fas.fa-angle-up').style.display = "none";
             document.querySelector('.filter-ingredient.filter .fas.fa-angle-down').style.display = "flex";
             document.querySelector('.filter-ustensiles.filter .fas.fa-angle-up').style.display = "none";
@@ -133,6 +141,10 @@ function displayElementList(dropdownBtn, dropupBtn, input, filteredElement){
             listeUstensilesDIV.style.display = "flex";
             listeIngredientsDIV.style.display = "none";
             listeAppliancesDIV.style.display = "none";
+            document.querySelector('.filter-ingredient input').style.width = "100%";
+            document.querySelector('.filter-appareil input').style.width = "100%";
+            document.querySelector('.filter').style.marginRight = "0px";
+            document.querySelector('.filter-ustensiles input').style.width = "930px";
             document.querySelector('.filter-ingredient.filter .fas.fa-angle-up').style.display = "none";
             document.querySelector('.filter-ingredient.filter .fas.fa-angle-down').style.display = "flex";
             document.querySelector('.filter-appareil.filter .fas.fa-angle-up').style.display = "none";
@@ -145,14 +157,18 @@ function displayElementList(dropdownBtn, dropupBtn, input, filteredElement){
     if(dropupBtn != null){
         if(dropupBtn.parentElement.className == "filter-ingredient filter"){
             document.querySelector('.filter-ingredient.filter .fas.fa-angle-down').style.display = "flex";
+            document.querySelector('.filter-ingredient input').style.width = "100%";
             dropupBtn.style.display = "none";
             listeIngredientsDIV.style.display = "none";
         }else if(dropupBtn.parentElement.className == "filter-appareil filter"){
             document.querySelector('.filter-appareil.filter .fas.fa-angle-down').style.display = "flex";
+            document.querySelector('.filter-appareil input').style.width = "100%";
             dropupBtn.style.display = "none";
             listeAppliancesDIV.style.display = "none";
         }else if(dropupBtn.parentElement.className == "filter-ustensiles filter"){
             document.querySelector('.filter-ustensiles.filter .fas.fa-angle-down').style.display = "flex";
+            document.querySelector('.filter-ustensiles input').style.width = "100%";
+            document.querySelector('.filter').style.marginRight = "20px";
             dropupBtn.style.display = "none";
             listeUstensilesDIV.style.display = "none";
         }
